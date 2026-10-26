@@ -1,0 +1,284 @@
+/* ---------- Colores (cámbialos aquí y se actualizan en toda la página) ---------- */
+:root {
+  --fucsia: #d6197f;
+  --fucsia-oscuro: #8f0f55;
+  --rosa: #f7a8cc;
+  --rosa-claro: #ffe3f0;
+  --rosa-fondo: #fff4f9;
+  --texto: #4a2038;
+
+  --fuente-titulo: "Cormorant Garamond", Georgia, serif;
+  --fuente-texto: "Jost", "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--rosa-fondo);
+  color: var(--texto);
+  font-family: var(--fuente-texto);
+  line-height: 1.6;
+}
+
+/* ---------- Header ---------- */
+.header {
+  background: var(--fucsia);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-bottom: 6px solid var(--rosa);
+}
+
+.header__titulo {
+  font-family: var(--fuente-titulo);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Main: grid de productos ---------- */
+.productos {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.producto {
+  background: #fff;
+  border: 2px solid var(--rosa-claro);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* El fondo rosa se ve mientras no hayas puesto la imagen */
+.producto__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--rosa-claro);
+  color: transparent; /* oculta el texto alternativo si la imagen aún no carga */
+}
+
+.producto__texto {
+  padding: 1.1rem 1.25rem 1.4rem;
+  border-top: 4px solid var(--fucsia);
+}
+
+.producto__titulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--fucsia);
+  margin-bottom: 0.4rem;
+}
+
+.producto__descripcion {
+  font-size: 0.98rem;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--fucsia-oscuro);
+  color: var(--rosa-claro);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer__titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.redes {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.redes__enlace {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--rosa);
+  color: var(--fucsia-oscuro);
+  transition: background 0.2s, color 0.2s;
+}
+
+.redes__enlace:hover,
+.redes__enlace:focus-visible {
+  background: #fff;
+  color: var(--fucsia);
+}
+
+.redes__enlace:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.redes__enlace svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Pantallas grandes ---------- */
+@media (min-width: 768px) {
+  .productos {
+    padding: 3rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .footer {
+    padding: 2rem 3rem;
+  }
+}
+
+/* =====================================================
+   PÁGINA DE DETALLE DE UN PRODUCTO (producto.html)
+   ===================================================== */
+.detalle {
+  flex: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.detalle__volver {
+  color: var(--fucsia);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.detalle__volver:hover,
+.detalle__volver:focus-visible {
+  text-decoration: underline;
+}
+
+/* Imágenes */
+.detalle__principal {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 2px solid var(--rosa-claro);
+  background: var(--rosa-claro);
+  color: transparent;
+}
+
+.detalle__miniaturas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.detalle__miniaturas img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid var(--rosa-claro);
+  background: var(--rosa-claro);
+  color: transparent;
+}
+
+/* Información */
+.detalle__titulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  line-height: 1.1;
+  color: var(--fucsia);
+  margin-bottom: 0.75rem;
+}
+
+.detalle__intro {
+  font-size: 1.05rem;
+  max-width: 60ch;
+}
+
+.detalle__subtitulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--fucsia-oscuro);
+  margin: 1.5rem 0 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 3px solid var(--rosa);
+}
+
+.detalle__lista {
+  padding-left: 1.25rem;
+}
+
+.detalle__lista li {
+  margin-bottom: 0.4rem;
+}
+
+.detalle__lista li::marker {
+  color: var(--fucsia);
+}
+
+.detalle__boton {
+  display: inline-block;
+  margin-top: 1.75rem;
+  padding: 0.8rem 1.6rem;
+  background: var(--fucsia);
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background 0.2s;
+}
+
+.detalle__boton:hover,
+.detalle__boton:focus-visible {
+  background: var(--fucsia-oscuro);
+}
+
+/* Pantallas grandes: imagen a la izquierda, información a la derecha */
+@media (min-width: 768px) {
+  .detalle {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .detalle__volver {
+    grid-column: 1 / -1;
+  }
+}
