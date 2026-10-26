@@ -282,3 +282,19 @@ body {
     grid-column: 1 / -1;
   }
 }
+
+.header__titulo {
+  line-height: 0;
+}
+
+.header__titulo a {
+  display: inline-block;
+}
+
+.header__logo {
+  display: block;
+  height: clamp(56px, 12vw, 90px); /* cambia este valor para hacer el logo más grande o pequeño */
+  width: auto;
+  max-width: 100%;
+  
+}
